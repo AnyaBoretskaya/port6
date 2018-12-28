@@ -2,79 +2,63 @@ import timer from './timer.js';
 import './styles.css';
 
 function component() {
+
   var element = document.createElement('div');
-  let headerText=document.createElement('h1');
-  /*   
-  поле ввода секунд  
-  */  
-  let showTime=document.createElement('div');
-  let timerSec= document.createElement('label');
-  let getTime=document.createElement('input'); 
-  
-  /*   
-  поле ввода текста  
-  */   
-  let text= document.createElement('label');
-  let getText=document.createElement('input');
-  
-  /*
-  кнопки 
-  */
-  let buttonBlock=document.createElement('div');
-  let startButton=document.createElement('button');
-  let resetButton=document.createElement('button');
-  let pauseButton=document.createElement('button');
-  let stopButton=document.createElement('button');
-  
-
-
-
-  /*
-  установка аттрибутов для поля ввода секунд
-  */
   element.setAttribute('class','parent')
-  getTime.setAttribute('type','number');
-  getTime.setAttribute('placeholder','Введите секунды...');
-  getTime.setAttribute('id','seconds');
-  getText.setAttribute('placeholder','Введите текст...')
-  getText.setAttribute('id','text')
-  showTime.setAttribute('id','status');
-  showTime.innerHTML=0;
 
-  headerText.innerHTML='MyTimer';
+  var time=document.createElement('input');
+  time.setAttribute('id','sec');
+  time.setAttribute('type','number');
+
+  var alert=document.createElement('input');
+  alert.setAttribute('id','mess');
+
+  var sec_b=document.createElement('button');
+  sec_b.setAttribute('id','SEC');
+  sec_b.setAttribute('class','button');
+  sec_b.innerHTML='-';
+
+  var start_b=document.createElement('button');
+  start_b.setAttribute('id','start');
+  start_b.setAttribute('class','button'); 
+  start_b.innerHTML='Start';
+
+  var stop_b=document.createElement('button');
+  stop_b.setAttribute('id','STOP');
+  stop_b.setAttribute('class','button');
+  stop_b.innerHTML='Stop';
+
+  var pause_b=document.createElement('button');
+  pause_b.setAttribute('id','pause');
+  pause_b.setAttribute('class','button');
+  pause_b.innerHTML='Pause';
+
+  var reset_b=document.createElement('button');
+  reset_b.setAttribute('id','reset');
+  reset_b.setAttribute('class','button');
+  reset_b.innerHTML='Reset';
+
+  var show=document.createElement('p');
+  show.innerHTML=0;
+  show.setAttribute('class','show');
+  show.setAttribute('id','show');
+
+  var buttons1=document.createElement('div');
+  buttons1.setAttribute('class','buttons');
+
+  var buttons2=document.createElement('div');
+  buttons2.setAttribute('class','buttons');
   
-  buttonBlock.setAttribute('class','buttonBlock');
-
-  startButton.setAttribute('id','setup'); 
-  startButton.setAttribute('class','button');
-  startButton.innerHTML='Start';
-
-  resetButton.setAttribute('id','reset');
-  resetButton.setAttribute('class','button');
-  resetButton.innerHTML='Reset';
-
-  pauseButton.setAttribute('id','pause');
-  pauseButton.setAttribute('class','button');
-  pauseButton.innerHTML='Pause';
-
-  stopButton.setAttribute('id','stop');
-  stopButton.setAttribute('class','button');
-  stopButton.innerHTML='Stop';
-  
-  timerSec.setAttribute('for','seconds');
-
-  element.appendChild(headerText);
-  element.appendChild(timerSec);  
-  timerSec.appendChild(getTime);
-  text.appendChild(getText);   
-  element.appendChild(text);
-  element.appendChild(buttonBlock); 
-  buttonBlock.appendChild(startButton); 
-  buttonBlock.appendChild(resetButton);
-  buttonBlock.appendChild(pauseButton);
-  buttonBlock.appendChild(stopButton);  
-  element.appendChild(showTime);
-  
+  element.appendChild(buttons1);
+  buttons1.appendChild(start_b);
+  buttons1.appendChild(pause_b);
+  buttons1.appendChild(time);
+  element.appendChild(buttons2);
+  buttons2.appendChild(stop_b);
+  buttons2.appendChild(reset_b);
+  buttons2.appendChild(alert);
+  buttons2.appendChild(sec_b);
+  element.appendChild(show);
   return element;
 }
 

@@ -9,10 +9,12 @@ class Timer {
      this.callback=callback;
     this.interval = 1000;
     this.maxCount = 0;
-    this.inputText = document.getElementById("text");
+    this.k = true;
+
   }
 
   start() {
+    this.k = true;
     if (this.stopped) {
       this.started = true;
       this.paused = false;
@@ -30,27 +32,29 @@ class Timer {
   }
 
   stop() {
-    this.paused = false;
-    this.started = false;
     this.stopped = true;
-    this.running = false;
-    this.currentCount = 0;
+    this.currentCount=0;
+    document.getElementById("show").innerHTML = this.currentCount; 
   }
-
+  
   update(item) {
-    document.getElementById("status").innerHTML = item;    
+    document.getElementById("show").innerHTML = item;  
     --this.currentCount;
-
-    if (this.currentCount < 0) {
+    if(this.k)
+    { 
+      if (this.currentCount < 0) 
+      {
       this.callback.call();      
       this.stop();
+      }
     }
+    
   }
 
   reset() {
     this.currentCount = Number(this.inputEl.value);
 
-    document.getElementById("status").innerHTML = this.currentCount;
+    document.getElementById("show").innerHTML = this.currentCount;
   }
 
   loop() {
@@ -62,21 +66,27 @@ class Timer {
       setTimeout(() => this.loop(), this.interval);
     }
   }
+  seeec(){
+    this.k = false;
+  }
 }
 
 
 function alertText(){
-  let inputText = document.getElementById("text");
-  let word = inputText.value;
-  alert(word);
+  alert(document.getElementById("mess").value);
 }
 
-window.onload = function() {  
-
-  let inputEl = document.getElementById("seconds");
-  const lol = new Timer(inputEl,alertText);
-  document.getElementById("setup").onclick = () => lol.start();
-  document.getElementById("reset").onclick = () => lol.reset();
-  document.getElementById("pause").onclick = () => lol.pause();
-  document.getElementById("stop").onclick = () => lol.stop();
-};
+window.onload = function() { 
+  let inputEl = document.getElementById("sec");
+  const func = new Timer(inputEl,alertText);
+  start.onclick= function()
+  {func.start();}
+  STOP.onclick= function()
+  {func.stop();}
+  reset.onclick= function()
+  {func.reset();}
+  pause.onclick= function()
+  {func.pause();}
+  SEC.onclick=function()
+  {func.seeec();}
+}

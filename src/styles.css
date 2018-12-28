@@ -70,4 +70,23 @@ h1{
   color:#fa0909;
 }
 
+  .parent{
+    width: 100%;
+    height: 900px;
+    background-color: rgb(12, 12, 12);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .show
+{
+  color:white;
 
+font-size: 40px;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#sec,#mess
+{
+margin-left:10px;
+
+}
